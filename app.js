@@ -16,7 +16,7 @@ const cors = require("cors");
 const app = express();
 
 //don't show the log when it is test
-if (process.env.NODE_ENV !== "test") {
+if (process.env.NODE_ENV === "dev") {
   app.use(morgan("dev"));
 }
 app.use(express.json());

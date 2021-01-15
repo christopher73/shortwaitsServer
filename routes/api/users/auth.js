@@ -1,11 +1,11 @@
 const express = require("express");
 const controllers = require("../../../controllers");
-
+const mw = require("../../../middlewares");
 const router = express.Router();
 
+router.post("/verify-num", mw.rateLimiter, controllers.users.auth.verifyNum);
+router.post("/verify-otp", mw.rateLimiter, controllers.users.auth.verifyOTP);
+router.post("/resend-otp", mw.rateLimiter, controllers.users.auth.resendOTP);
 router.post("/register", controllers.users.auth.register);
-// router.post("/login", AuthController.login);
-// router.post("/verify-otp", AuthController.verifyConfirm);
-// router.post("/resend-verify-otp", AuthController.resendConfirmOtp);
 
 module.exports = router;
